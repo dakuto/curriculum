@@ -5,6 +5,7 @@ function fruitsPrice($fruits, $cost, $quantity) //果物、個数、単価の順
     echo $fruits . "は" . $price . "円です。" . "<br>";
 }
 
+// 果物名、個数、単価で配列を作成
 fruitsPrice("りんご", 3, 100);
 fruitsPrice("みかん", 3, 50);
 fruitsPrice("もも", 10, 300);
