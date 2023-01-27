@@ -1,11 +1,15 @@
 <?php
-function fruitsPrice($fruits, $cost, $quantity) //果物、個数、単価の順になってます。
+$fruits = ["りんご" => 50, "みかん" => 50, "もも" => 300];
+$fruitAmount = [6, 3, 10];
+
+function getPrice($unitPrice, $quantity)
 {
-    $price = $cost * $quantity; // 金額を計算する関数
-    echo $fruits . "は" . $price . "円です。" . "<br>";
+    $price = $unitPrice * $quantity;
+    return $price;
 }
 
-// 果物名、個数、単価で配列を作成
-fruitsPrice("りんご", 3, 100);
-fruitsPrice("みかん", 3, 50);
-fruitsPrice("もも", 10, 300);
+foreach ($fruits as $key => $value) {
+    echo $key . "は" . getPrice($value, $fruitAmount[$i]) . "円です。"."<br>";
+    $i++;
+    // var_dump($fruitAmount);
+}
