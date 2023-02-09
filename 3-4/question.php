@@ -1,5 +1,6 @@
 <?php
-$user_name = $_POST['user_name'];
+session_start();
+$_SESSION['user_name'] = $_POST['user_name'];
 
 $question1 = ["80", "22", "20", "21"];
 $question2 = ["PHP", "Python", "JAVA", "HTML"];
@@ -18,14 +19,14 @@ $answer3 = $question3[1];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2章チェックテスト｜質問</title>
+    <title>3章チェックテスト｜質問</title>
     <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
     <div class="container question_container">
-        <p>お疲れ様です<?php echo $user_name; ?>さん</p>
+        <p>お疲れ様です<?php echo $_SESSION['user_name']; ?>さん</p>
 
         <form action="answer.php" method="post">
             <h2>①ネットワークのポート番号は何番？</h2>
