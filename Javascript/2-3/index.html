@@ -35,8 +35,12 @@
         "click",
         function () {
           //①配列で「大吉」「中吉」「凶」を準備
+          const omikuji = ["大吉", "中吉", "小吉", "吉", "末吉", "凶"];
+
           //②乱数を発生させて、その値を取得
+          const num = Math.floor(Math.random() * omikuji.length);
           //③取得した **btn** の「クリック」という文字を配列の中身の文字にランダムに変化させる
+          btn.textContent = omikuji[num];
         },
         false
       );
