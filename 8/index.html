@@ -7,14 +7,14 @@
     <title>8章チェックテスト</title>
   </head>
   <body>
-    <select onchange="changeLang()">
+    <select id="bilingual" onchange="changeLang()">
       <option id="select">選択してください</option>
       <option id="selected_jpn">日本語</option>
       <option id="selected_en">English</option>
       <option id="selected_all">全て表示</option>
     </select>
-    <table>
-      <tr class="">
+    <table id="table">
+      <tr>
         <th>日本</th>
         <td>こんにちは</td>
         <td>ありがとう</td>
@@ -27,5 +27,34 @@
         <td>Good Bye</td>
       </tr>
     </table>
+
+    <script>
+      //①onchangeで使用されている関数の中身を実装してください。
+      function changeLang() {
+        let bilingual = document.getElementById("bilingual").value;
+        let table = document.getElementById("table");
+
+        let firrow = table.rows[0];
+        let secrow = table.rows[1];
+
+        console.log(firrow);
+        console.log(secrow);
+
+        switch (bilingual) {
+          case "日本語":
+            firrow.style.display = "block";
+            secrow.style.display = "none";
+            break;
+          case "English":
+            secrow.style.display = "block";
+            firrow.style.display = "none";
+            break;
+          case "全て表示":
+            firrow.style.display = "block";
+            secrow.style.display = "block";
+            break;
+        }
+      }
+    </script>
   </body>
 </html>
