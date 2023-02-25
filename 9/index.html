@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>９章｜チェックテスト</title>
+
+    <link rel="stylesheet" href="./style.css" />
+
+    <!-- jQuery_cdr -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.3.js"
+      integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="box">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+    <button class="click">クリック</button>
+
+    <script>
+      $("button").click(function () {
+        $(this).toggleClass("active");
+        // .activeの付加有無を確認
+        const flg = $(this).hasClass("active");
+        // .activeが付加していたらonFuncの動作をするそうでない場合はoffFundの動作をする
+        if (flg == true) {
+          onFunc();
+        } else {
+          offFunc();
+        }
+
+        // onFuncは背景を０％にする
+        function onFunc() {
+          $(".left").animate({ width: "0%" }, 2000);
+          $(".right").animate({ width: "0%" }, 2000);
+        }
+        // offFuncは背景を50％にする
+        function offFunc() {
+          $(".left").animate({ width: "50%" }, 2000);
+          $(".right").animate({ width: "50%" }, 2000);
+        }
+      });
+    </script>
+  </body>
+</html>
