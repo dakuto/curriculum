@@ -15,8 +15,8 @@ if (isset($_POST["register"])) {
     // ユーザー名が未入力の場合
     if (empty($_POST['username'])) {
         $userError = 'ユーザー名が未入力です。';
-    // パスワードが未入力の場合
-    } 
+        // パスワードが未入力の場合
+    }
     if (empty($_POST['password'])) {
         $passError = 'パスワードが未入力です。';
     }
@@ -25,8 +25,8 @@ if (isset($_POST["register"])) {
     if (!empty($_POST['username']) && !empty($_POST['password'])) {
         // どちらもあった場合のみ変数に代入
 
-        $username = htmlspecialchars($_POST['username'],ENT_QUOTES);
-        $password = htmlspecialchars($_POST['password'],ENT_QUOTES);
+        $username = htmlspecialchars($_POST['username'], ENT_QUOTES);
+        $password = htmlspecialchars($_POST['password'], ENT_QUOTES);
 
         // PDOインスタンスを取得
         $pdo = db_connect();
@@ -35,10 +35,10 @@ if (isset($_POST["register"])) {
             $sql = "INSERT INTO users (name, password) VALUES (:name, :password)";
             $stmt = $pdo->prepare($sql);
             // ユーザー名をバインド
-            $stmt->bindParam(':name',$username);
-            $password_hash = password_hash($password,PASSWORD_DEFAULT);
+            $stmt->bindParam(':name', $username);
+            $password_hash = password_hash($password, PASSWORD_DEFAULT);
             // パスワードをバインド
-            $stmt->bindParam(':password',$password_hash);
+            $stmt->bindParam(':password', $password_hash);
             $stmt->execute();
             $okMessage = 'ユーザーの登録が完了しました。';
         } catch (PDOException $e) {
@@ -51,25 +51,30 @@ if (isset($_POST["register"])) {
 ?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>ユーザー新規登録</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <font color="ACFF84"><?php echo htmlspecialchars($okMessage, ENT_QUOTES); ?></font><br>
-    <h1>ユーザー新規登録</h1>
-    <form action="register.php" method="post">
-        <input placeholder="ユーザー名" type="text" name="username" id="name" style="width: 250px; height: 30px">
-        <br>
-        <input placeholder="パスワード" type="password" name="password" id="password" style="width: 250px; height: 30px; margin-top: 15px;">
-        <br>
-        <input class="button" type="submit" value="新規登録" name="register" id="register">
 
-        <font color="red"><?php echo htmlspecialchars($userError, ENT_QUOTES); ?></font><br>
-        <font color="red"><?php echo htmlspecialchars($passError, ENT_QUOTES); ?></font><br>
-        <font color="red"><?php echo htmlspecialchars($db_error, ENT_QUOTES); ?></font><br>
-    </form>
+<body>
+    <div class="container">
+        <h1>ユーザー新規登録</h1>
+        <form action="register.php" method="post">
+            <input placeholder="ユーザー名" type="text" name="username" id="name">
+            <input placeholder="パスワード" type="password" name="password" id="password">
+            <input class="button" type="submit" value="新規登録" name="register" id="register">
+            <div class="error_comment">
+                <font color="red"><?php echo htmlspecialchars($userError, ENT_QUOTES); ?></font>
+                <font color="red"><?php echo htmlspecialchars($passError, ENT_QUOTES); ?></font>
+                <font color="red"><?php echo htmlspecialchars($db_error, ENT_QUOTES); ?></font>
+                <font color="ACFF84"><?php echo htmlspecialchars($okMessage, ENT_QUOTES); ?></font>
+            </div>
+        </form>
+    </div>
 </body>
+
 </html>

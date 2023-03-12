@@ -7,7 +7,7 @@ require_once('function.php');
 session_start();
 
 if (!empty($_POST["login"])) {
-    
+
     if (empty($_POST["username"])) {
         echo "ユーザー名が未入力です。";
     }
@@ -16,8 +16,8 @@ if (!empty($_POST["login"])) {
     }
 
     if (!empty($_POST["username"]) && !empty($_POST["password"])) {
-        $name = htmlspecialchars($_POST["username"],ENT_QUOTES);
-        $pass = htmlspecialchars($_POST["password"],ENT_QUOTES);
+        $name = htmlspecialchars($_POST["username"], ENT_QUOTES);
+        $pass = htmlspecialchars($_POST["password"], ENT_QUOTES);
 
         $pdo = db_connect();
 
@@ -48,21 +48,27 @@ if (!empty($_POST["login"])) {
 ?>
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ログイン画面</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div>
-        <h2>ログイン画面</h2>
-        <button class="btn" onclick="location.href='register.php'">新規ユーザー登録</button>
+    <div class="container">
+        <div class="title">
+            <h2>ログイン画面</h2>
+            <button class="btn" onclick="location.href='register.php'">新規ユーザー登録</button>
+        </div>
+        <form action="" method="post">
+            <input placeholder="ユーザー名" type="text" name="username" id="username">
+            <input placeholder="パスワード" type="password" name="password" id="password">
+            <input class="button" type="submit" value="ログイン" name="login">
+        </form>
     </div>
-    <form action="" method="post"><br>
-        <input placeholder="ユーザー名" type="text" name="username" id="username" style="width: 250px; height: 30px;"><br>
-        <input placeholder="パスワード" type="password" name="password" id="password" style="width: 250px; height: 30px; margin-top: 15px;"><br>
-        <input class="button" type="submit" value="ログイン" name="login"><br>
-    </form>
 </body>
+
 </html>

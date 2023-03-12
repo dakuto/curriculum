@@ -23,6 +23,7 @@ try {
 
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,12 +31,14 @@ try {
     <link rel="stylesheet" href="style.css">
     <title>在庫一覧画面</title>
 </head>
+
 <body>
-    <h2>在庫一覧画面</h2>
-    <div>
-        <button class="btn1" onclick="location.href='create_book.php'">新規登録</button>
-        <button class="btn2" onclick="location.href='logout.php'">ログアウト</button><br>
-    </div>
+    <div class="container main_container">
+        <h2>在庫一覧画面</h2>
+        <div class="main_btn">
+            <button class="btn1" onclick="location.href='create_book.php'">新規登録</button>
+            <button class="btn2" onclick="location.href='logout.php'">ログアウト</button>
+        </div>
         <table>
             <tr>
                 <th>タイトル</th>
@@ -53,5 +56,7 @@ try {
                 </tr>
             <?php } ?>
         </table>
+    </div>
 </body>
+
 </html>
